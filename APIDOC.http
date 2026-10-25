@@ -1,0 +1,104 @@
+# ========= ADMIN, STUDENT REGISTRATION =============
+
+# api call for admin create view
+
+###
+
+POST http://127.0.0.1:8000/accounts/register/
+Content-Type: application/json
+
+{
+"username": "sanu",
+"email": "[sanu@gmail.com](mailto:sanu@gmail.com)",
+"password": "s123",
+"phone": "9447529678"
+}
+
+# api call for student create view
+
+###
+
+POST http://127.0.0.1:8000/accounts/student/
+Content-Type: application/json
+
+{
+"username": "kiran",
+"email": "[kiran@gmail.com](mailto:kiran@gmail.com)",
+"password": "k123",
+"phone": "94328319229"
+}
+
+# api call for token authentication
+
+###
+
+POST http://127.0.0.1:8000/exams/assessment/token/
+Content-Type: application/json
+
+{
+"username": "sanu",
+"password": "s123"
+}
+
+# ========= ASSESSMENT LIST, CREATE VIEW =============
+
+# api call for assessment listing
+
+###
+
+GET http://127.0.0.1:8000/exams/assessment/all/
+Accept: application/json
+Authorization: Token ac1fe3fec13d8c99ecfd26eb4497fc060b30fc02
+
+# api call for creating assessment
+
+###
+
+POST http://127.0.0.1:8000/exams/assessment/add/
+Content-Type: application/json
+Authorization: Token ac1fe3fec13d8c99ecfd26eb4497fc060b30fc02
+
+{
+"title": "assessment 6",
+"batch": "june 2k26",
+"language": "html",
+"exam_date": "2026-10-24",
+"start_time": "11:00:00",
+"duration": 2,
+"status": "submitted"
+}
+
+# ========= ASSESSMENT RETRIEVE, UPDATE, DELETE VIEW =============
+
+# api call for one assessment listing
+
+###
+
+GET http://127.0.0.1:8000/exams/assessment/1/
+Accept: application/json
+Authorization: Token ac1fe3fec13d8c99ecfd26eb4497fc060b30fc02
+
+# api call for updating one assessment
+
+###
+
+PUT http://127.0.0.1:8000/exams/assessment/5/
+Content-Type: application/json
+Authorization: Token ac1fe3fec13d8c99ecfd26eb4497fc060b30fc02
+
+{
+"title": "assessment 1",
+"batch": "june 2k26",
+"language": "html",
+"exam_date": "2026-10-23",
+"start_time": "10:00:00",
+"duration": 2,
+"status": "completed"
+}
+
+# api call for deleting one assessment
+
+###
+
+DELETE http://127.0.0.1:8000/exams/assessment/5/
+Authorization: Token ac1fe3fec13d8c99ecfd26eb4497fc060b30fc02
