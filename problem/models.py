@@ -21,7 +21,23 @@ class Question(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
 
-    updated_at = models.DateTimeField(auto_now_add=True)
+    question_number = models.PositiveBigIntegerField(null=True)
+
+    updated_at = models.DateTimeField(auto_now=True)
 
     created_by = models.ForeignKey(User,on_delete=models.CASCADE)
+
+    def save(self,*args,**kwargs):
+
+        last_question_object = Question.objects.filter(assessment=self.assessment).last()
+
+        if last_question_object:
+
+            self.question_number=last_question_object+1
+
+        else:
+
+            self.question_number=1
+
+        return super().save(*args,**kwargs) 
 
