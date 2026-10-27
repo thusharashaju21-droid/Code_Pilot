@@ -21,7 +21,7 @@ class Question(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
 
-    question_number = models.PositiveBigIntegerField(null=True)
+    question_number = models.PositiveBigIntegerField(default=0)
 
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -33,7 +33,7 @@ class Question(models.Model):
 
         if last_question_object:
 
-            self.question_number=last_question_object+1
+            self.question_number=last_question_object.question_number+1
 
         else:
 

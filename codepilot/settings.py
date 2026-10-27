@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'accounts',
     'exams',
+    'evaluation',
     'rest_framework.authtoken',
     'problem',
 ]

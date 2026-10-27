@@ -64,7 +64,7 @@ Accept: application/json
 Authorization: Token ac1fe3fec13d8c99ecfd26eb4497fc060b30fc02
 
 ### Update one assessment
-PUT http://127.0.0.1:8000/exams/assessment/5/
+PUT http://127.0.0.1:8000/exams/assessment/1/
 Content-Type: application/json
 Authorization: Token ac1fe3fec13d8c99ecfd26eb4497fc060b30fc02
 
@@ -86,16 +86,17 @@ Authorization: Token ac1fe3fec13d8c99ecfd26eb4497fc060b30fc02
 # ========= QUESTION CREATE, RETRIEVE, UPDATE, DELETE =============
 
 ### Add question to assessment 
-POST http://127.0.0.1:8000/problem/assessment/4/question/
+POST http://127.0.0.1:8000/problem/assessment/1/question/
 Content-Type: application/json
 Authorization: Token ac1fe3fec13d8c99ecfd26eb4497fc060b30fc02
 
 {
-    "title": "Odd or Even Number",
-    "description": "Write a Python program to check whether a number is odd or even.",
-    "score": 20,
-    "sample_input": "20",
-    "sample_output": "Even"
+    "title": "Variables in Python",
+    "description": "Write a Python program to store two numbers and print their sum.",
+    "score": 10,
+    "assessment": 1,
+    "sample_input": "10 20",
+    "sample_output": "30"
 }
 
 ### Retrieve one question
