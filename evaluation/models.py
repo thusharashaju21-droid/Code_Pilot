@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 from exams.models import Assessment
+from problem.models import Question
 
 class Submission(models.Model):
 
@@ -44,7 +45,7 @@ class Answer(models.Model):
     
     submission = models.ForeignKey(Submission, on_delete=models.CASCADE, related_name='answers')
     
-    question = models.ForeignKey('Question', on_delete=models.CASCADE, related_name='answers')
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='answers')
     
     answer_text = models.TextField()
     

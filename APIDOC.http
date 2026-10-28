@@ -1,7 +1,8 @@
 
 # ========= ADMIN, STUDENT REGISTRATION =============
 
-### Admin registration
+#Admin registration
+### 
 POST http://127.0.0.1:8000/accounts/register/
 Content-Type: application/json
 
@@ -12,7 +13,8 @@ Content-Type: application/json
     "phone": "9447529678"
 }
 
-### Student registration
+#Student registration
+### 
 POST http://127.0.0.1:8000/accounts/student/
 Content-Type: application/json
 
@@ -23,24 +25,27 @@ Content-Type: application/json
     "phone": "94328319229"
 }
 
-### Token authentication
+#Token authentication
+### 
 POST http://127.0.0.1:8000/exams/assessment/token/
 Content-Type: application/json
 
 {
-    "username": "sanu",
-    "password": "s123"
+    "username": "kiran",
+    "password": "k123"
 }
 
 
 # ========= ASSESSMENT LIST AND CREATE =============
 
-### List all assessments
+#List all assessments
+### 
 GET http://127.0.0.1:8000/exams/assessment/all/
 Accept: application/json
 Authorization: Token ac1fe3fec13d8c99ecfd26eb4497fc060b30fc02
 
-### Create assessment
+#Create assessment
+### 
 POST http://127.0.0.1:8000/exams/assessment/add/
 Content-Type: application/json
 Authorization: Token ac1fe3fec13d8c99ecfd26eb4497fc060b30fc02
@@ -58,12 +63,14 @@ Authorization: Token ac1fe3fec13d8c99ecfd26eb4497fc060b30fc02
 
 # ========= ASSESSMENT RETRIEVE, UPDATE, DELETE =============
 
-### Retrieve one assessment
-GET http://127.0.0.1:8000/exams/assessment/1/
+#Retrieve one assessment
+### 
+GET http://127.0.0.1:8000/exams/assessment/3/
 Accept: application/json
 Authorization: Token ac1fe3fec13d8c99ecfd26eb4497fc060b30fc02
 
-### Update one assessment
+#Update one assessment
+### 
 PUT http://127.0.0.1:8000/exams/assessment/1/
 Content-Type: application/json
 Authorization: Token ac1fe3fec13d8c99ecfd26eb4497fc060b30fc02
@@ -78,14 +85,17 @@ Authorization: Token ac1fe3fec13d8c99ecfd26eb4497fc060b30fc02
     "status": "completed"
 }
 
-### Delete one assessment
+#Delete one assessment
+### 
 DELETE http://127.0.0.1:8000/exams/assessment/5/
+Accept: application/json
 Authorization: Token ac1fe3fec13d8c99ecfd26eb4497fc060b30fc02
 
 
 # ========= QUESTION CREATE, RETRIEVE, UPDATE, DELETE =============
 
-### Add question to assessment 
+#Add question to assessment 
+### 
 POST http://127.0.0.1:8000/problem/assessment/1/question/
 Content-Type: application/json
 Authorization: Token ac1fe3fec13d8c99ecfd26eb4497fc060b30fc02
@@ -99,25 +109,53 @@ Authorization: Token ac1fe3fec13d8c99ecfd26eb4497fc060b30fc02
     "sample_output": "30"
 }
 
-### Retrieve one question
+#Retrieve one question
+### 
 GET http://127.0.0.1:8000/problem/question/1/
 Accept: application/json
 Authorization: Token ac1fe3fec13d8c99ecfd26eb4497fc060b30fc02
 
-### Update one question
-PUT http://127.0.0.1:8000/problem/question/1/
+#Update one question
+### 
+PUT http://127.0.0.1:8000/problem/question/3/
 Content-Type: application/json
 Authorization: Token ac1fe3fec13d8c99ecfd26eb4497fc060b30fc02
 
 {
     "title": "factorial  Number",
-    "description": "Write a Python program to find the factorial of a number.",
+    "description": "write a Python program to find the factorial of a number.",
     "score": 25,
     "sample_input": "5",
     "sample_output": "120"
 }
 
-### Delete one question
+#Delete one question
+### 
 DELETE http://127.0.0.1:8000/problem/assessment/4/question/1/
-Authorization: Token ac1fe3fec13d8c99ecfd26eb4497fc060b30fc02"
+Accept: application/json
+Authorization: Token ac1fe3fec13d8c99ecfd26eb4497fc060b30fc02
+
+#=====================SUBMISSION==============================
+
+#Create Assessment Submission
+### 
+POST http://127.0.0.1:8000/evaluation/assessment/3/submission/
+Content-Type: application/json
+Authorization: Basic kiran:k123
+
+
+#Add Answer Call
+###
+POST http://127.0.0.1:8000/evaluation/submission/1/answer/
+Content-Type: application/json
+Authorization: Basic kiran:k123
+
+{
+    "question" : 3,
+    "answer_text" : "fact * =i ,print(fact)"
+}
+
+
+
+
 

@@ -30,5 +30,5 @@ urlpatterns = [
     path("problem/",include("problem.urls")),
     
     #evaluation app [submission,answer]
-    path("evaluation",include("evaluation.urls")),
+    path("evaluation/",include("evaluation.urls")),
 ]
