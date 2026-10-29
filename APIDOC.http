@@ -19,10 +19,10 @@ POST http://127.0.0.1:8000/accounts/student/
 Content-Type: application/json
 
 {
-    "username": "kiran",
-    "email": "kiran@gmail.com",
+    "username": "krish",
+    "email": "krish@gmail.com",
     "password": "k123",
-    "phone": "94328319229"
+    "phone": "94328459234"
 }
 
 #Token authentication
@@ -135,26 +135,44 @@ DELETE http://127.0.0.1:8000/problem/assessment/4/question/1/
 Accept: application/json
 Authorization: Token ac1fe3fec13d8c99ecfd26eb4497fc060b30fc02
 
-#=====================SUBMISSION==============================
+#=====================SUBMISSION START RETRIEVE==============================
 
-#Create Assessment Submission
+# Submission Start
 ### 
-POST http://127.0.0.1:8000/evaluation/assessment/3/submission/
+POST http://127.0.0.1:8000/evaluation/assessment/1/submission/
 Content-Type: application/json
-Authorization: Basic kiran:k123
+Authorization: Basic krish:k123
 
+
+#Retrieve Submission
+###
+GET http://127.0.0.1:8000/evaluation/submission/11/
+Accept: application/json
+Authorization: Basic sanu:s123
+
+#======================ANSWER CREATE==========================
 
 #Add Answer Call
 ###
-POST http://127.0.0.1:8000/evaluation/submission/1/answer/
+POST http://127.0.0.1:8000/evaluation/submission/11/answer/
 Content-Type: application/json
-Authorization: Basic kiran:k123
+Authorization: Basic krish:k123
 
 {
     "question" : 3,
     "answer_text" : "fact * =i ,print(fact)"
 }
 
+# Answer Evaluate
+###
+PUT http://127.0.0.1:8000/evaluation/answer/11/
+Content-Type: application/json
+Authorization: Token 4d24e95f0bf70caf994558ea92fd94d5736ae10b
+
+{
+    "marks_awarded":2,
+    "feedback":"poor"
+}
 
 
 

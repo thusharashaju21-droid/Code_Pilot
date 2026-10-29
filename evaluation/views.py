@@ -1,10 +1,13 @@
 from django.shortcuts import render,get_object_or_404
 
 from rest_framework.views import APIView
-from rest_framework import authentication
+from rest_framework import authentication,permissions
 from rest_framework.response import Response
+from rest_framework import serializers
 
 from exams.models import Assessment
+
+from problem.models import Question
 
 from evaluation.permissions import IsStudent
 from evaluation.models import Submission
@@ -26,7 +29,7 @@ class SubmissionStartView(APIView):
 
         serializer_instance = SubmissionSerializer(instance)
 
-        return Response(serializer_instance.data)
+        return Response(data=serializer_instance.data)
 
 class AnswerCreateView(APIView):
 
@@ -42,6 +45,21 @@ class AnswerCreateView(APIView):
 
         form_data = request.data
 
+        #-----validation start
+
+        assessment_object = submission_object.assessment
+
+        assessment_question = Question.objects.filter(assessment=assessment_object).values_list("id",flat=True)
+
+        question = form_data.get("question")
+
+        if question not in assessment_question:
+
+            raise serializers.ValidationError("Invalid question,question not existing")
+
+
+        #-------validation end
+
         serializer_instance = AnswerSerializer(data=form_data)
 
         if serializer_instance.is_valid():
@@ -49,6 +67,27 @@ class AnswerCreateView(APIView):
             serializer_instance.save(submission=submission_object)
 
         return Response(data=serializer_instance.data)
+
+class SubmissionRetrieveView(APIView):
+
+    authentication_classes = [authentication.BasicAuthentication]
+
+    permission_classes = [permissions.IsAdminUser]
+
+    def get(self, request, pk=None):
+
+        instance = get_object_or_404(Submission,id=pk)
+
+        serializer_instance = SubmissionSerializer(instance)
+
+        return Response(data=serializer_instance.data)
+
+
+    
+
+
+
+    
 
 
 

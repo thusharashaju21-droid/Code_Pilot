@@ -3,21 +3,28 @@ from evaluation.models import Submission,Answer
 
 class SubmissionSerializer(serializers.ModelSerializer):
 
+    assessment = serializers.StringRelatedField(read_only = True)
+
+    student = serializers.StringRelatedField(read_only = True)
+
+    answers = serializers.SerializerMethodField(read_only = True)
+
     class Meta:
 
         model = Submission
+
         fields = "__all__"
-        read_only_fields =[fields]
 
-    # def get_fields(self):
+        read_only_fields = [fields]
 
-    #     fields=super().get_fields()   
+    def get_answers(self,obj):
 
-    #     for field in fields.values():
+        answer_objects = Answer.objects.filter(submission=obj) 
 
-    #         field.read_only=True
+        serializer_instance = AnswerSerializer(answer_objects,many=True)
 
-    #     return fields    
+        return serializer_instance.data
+
         
 class AnswerSerializer(serializers.ModelSerializer):
 
