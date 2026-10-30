@@ -10,7 +10,7 @@ from exams.models import Assessment
 from problem.models import Question
 
 from evaluation.permissions import IsStudent
-from evaluation.models import Submission
+from evaluation.models import Submission,Answer
 from evaluation.serializers import SubmissionSerializer,AnswerSerializer
 
 class SubmissionStartView(APIView):
@@ -82,6 +82,39 @@ class SubmissionRetrieveView(APIView):
 
         return Response(data=serializer_instance.data)
 
+class AnswerUpdateView(APIView):
+
+    authentication_classes = [authentication.BasicAuthentication]
+
+    permission_classes = [permissions.IsAdminUser]
+
+
+    def patch(self,request,pk=None):
+
+        answer_id =pk
+
+        form_data = request.data
+
+        answer_object = get_object_or_404(Answer,id=answer_id)
+
+        serializer_instance = AnswerSerializer(data=form_data,instance=answer_object,partial = True)
+
+        serializer_instance.fields["marks_awarded"].read_only = False
+        
+        serializer_instance.fields["feedback"].read_only = False
+
+        if serializer_instance.is_valid():
+
+            print(serializer_instance.validated_data)
+
+            serializer_instance.save()
+
+            return Response(data=serializer_instance.data)
+
+
+        else:
+
+            return Response(data=serializer_instance.errors)
 
     
 

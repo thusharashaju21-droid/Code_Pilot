@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from evaluation.models import Submission,Answer
+from problem.models import Question  
 
 class SubmissionSerializer(serializers.ModelSerializer):
 
@@ -25,8 +26,10 @@ class SubmissionSerializer(serializers.ModelSerializer):
 
         return serializer_instance.data
 
-        
+   
 class AnswerSerializer(serializers.ModelSerializer):
+
+    question = serializers.PrimaryKeyRelatedField(queryset =Question.objects.all())
 
     class Meta:
 

@@ -139,14 +139,14 @@ Authorization: Token ac1fe3fec13d8c99ecfd26eb4497fc060b30fc02
 
 # Submission Start
 ### 
-POST http://127.0.0.1:8000/evaluation/assessment/1/submission/
+POST http://127.0.0.1:8000/evaluation/assessment/2/submission/
 Content-Type: application/json
 Authorization: Basic krish:k123
 
 
 #Retrieve Submission
 ###
-GET http://127.0.0.1:8000/evaluation/submission/11/
+GET http://127.0.0.1:8000/evaluation/submission/12/
 Accept: application/json
 Authorization: Basic sanu:s123
 
@@ -154,24 +154,24 @@ Authorization: Basic sanu:s123
 
 #Add Answer Call
 ###
-POST http://127.0.0.1:8000/evaluation/submission/11/answer/
+POST http://127.0.0.1:8000/evaluation/submission/12/answer/
 Content-Type: application/json
 Authorization: Basic krish:k123
 
 {
-    "question" : 3,
-    "answer_text" : "fact * =i ,print(fact)"
+    "question" : 4,
+    "answer_text" : "sorted(w1)==sorted(w1) and w1!=w2"
 }
 
 # Answer Evaluate
 ###
-PUT http://127.0.0.1:8000/evaluation/answer/11/
+PATCH  http://127.0.0.1:8000/evaluation/answers/5/
 Content-Type: application/json
-Authorization: Token 4d24e95f0bf70caf994558ea92fd94d5736ae10b
+Authorization: Basic sanu:s123
 
 {
-    "marks_awarded":2,
-    "feedback":"poor"
+    "marks_awarded":56,
+    "feedback":"GOOD"
 }
 
 
