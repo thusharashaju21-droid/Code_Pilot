@@ -36,6 +36,24 @@ Content-Type: application/json
 }
 
 
+#=======================JWT==========================
+###
+POST http://127.0.0.1:8000/accounts/jwt/token/
+Content-Type: application/json
+
+{
+    "username" : "kiran",
+    "password" : "k123"
+}
+
+#Token JWT Refresh
+###
+POST http://127.0.0.1:8000/accounts/jwt/token/refresh/
+Content-Type: application/json
+
+{
+    "refresh" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc5MzY4OTA2OCwiaWF0IjoxNzkzNjAyNjY4LCJqdGkiOiI0MjRkZDQyZWYxZDk0YWM0OGM5ZDNlNDdhNmYzMGVlMiIsInVzZXJfaWQiOiIzIn0.57n9T_Vs8gYU02sH_sH-dXp0QVMG4D5nOUaixZR3ZkU"
+}
 # ========= ASSESSMENT LIST AND CREATE =============
 
 #List all assessments
@@ -96,9 +114,9 @@ Authorization: Token ac1fe3fec13d8c99ecfd26eb4497fc060b30fc02
 
 #Add question to assessment 
 ### 
-POST http://127.0.0.1:8000/problem/assessment/1/question/
+POST http://127.0.0.1:8000/problem/assessment/2/question/
 Content-Type: application/json
-Authorization: Token ac1fe3fec13d8c99ecfd26eb4497fc060b30fc02
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkzNjI2ODUwLCJpYXQiOjE3OTM2MjY1NTAsImp0aSI6ImMyYWM3Mzg4NzY3ZjQwMWJiNzRlMWRlYWM3NmY1NWM5IiwidXNlcl9pZCI6IjMifQ.4vrNiyBhsvcjvjK1vbLtL-gCK3YEJel5ryaGIX-X0zk
 
 {
     "title": "Variables in Python",
@@ -139,9 +157,9 @@ Authorization: Token ac1fe3fec13d8c99ecfd26eb4497fc060b30fc02
 
 # Submission Start
 ### 
-POST http://127.0.0.1:8000/evaluation/assessment/2/submission/
+POST http://127.0.0.1:8000/evaluation/assessment/7/submission/
 Content-Type: application/json
-Authorization: Basic krish:k123
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkzNjI3NjQ3LCJpYXQiOjE3OTM2MjczNDgsImp0aSI6ImU5MDk0NGIxODhmMjQ1YTVhODZlYTBmYjcxZWYyZTZiIiwidXNlcl9pZCI6IjMifQ.xwj6y2Zi7IYufjjAezhIrQkn41HBy6MHl8tPTFHiTnA
 
 
 #Retrieve Submission
@@ -156,7 +174,7 @@ Authorization: Basic sanu:s123
 ###
 POST http://127.0.0.1:8000/evaluation/submission/12/answer/
 Content-Type: application/json
-Authorization: Basic krish:k123
+Authorization:Basic kiran : k123
 
 {
     "question" : 4,
