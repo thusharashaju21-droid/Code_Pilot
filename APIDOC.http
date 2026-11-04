@@ -3,7 +3,7 @@
 
 #Admin registration
 ### 
-POST http://127.0.0.1:8000/accounts/register/
+POST http://127.0.0.1:8000/accounts/admin/register/
 Content-Type: application/json
 
 {
@@ -15,14 +15,14 @@ Content-Type: application/json
 
 #Student registration
 ### 
-POST http://127.0.0.1:8000/accounts/student/
+POST http://127.0.0.1:8000/accounts/student/register/
 Content-Type: application/json
 
 {
-    "username": "krish",
-    "email": "krish@gmail.com",
-    "password": "k123",
-    "phone": "94328459234"
+    "username": "Gautham",
+    "email": "gathum@gmail.com",
+    "password": "g123",
+    "phone": "9632359234"
 }
 
 #Token authentication
@@ -42,8 +42,8 @@ POST http://127.0.0.1:8000/accounts/jwt/token/
 Content-Type: application/json
 
 {
-    "username" : "kiran",
-    "password" : "k123"
+    "username" : "Gautham",
+    "password" : "g123"
 }
 
 #Token JWT Refresh
@@ -193,5 +193,23 @@ Authorization: Basic sanu:s123
 }
 
 
+#----------------Student Profile-----------------
+###
+PUT http://127.0.0.1:8000/accounts/profile/update/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkzNjg5MTE2LCJpYXQiOjE3OTM2ODg4MTYsImp0aSI6IjU4OTFjOWM0MTk1NTQzMmJiMzNkNzIxNGU4Njk0NGFiIiwidXNlcl9pZCI6IjgifQ.DfYu5sOzuhAnEk0DbEZC_KI5ZLCbrRzuFC2-rocQVNA
+
+{
+    "skills": "Python, Django, SQL",
+    "qualification": "Bcom",
+    "passoutyear": 2026,
+    "githuburl": "https://github.com/gautham",
+    "linkedurl": "https://www.linkedin.com/in/gautham/"
+}
 
 
+# Student Profile Me
+###
+GET http://127.0.0.1:8000/accounts/profile/me/
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkzNjg5MTE2LCJpYXQiOjE3OTM2ODg4MTYsImp0aSI6IjU4OTFjOWM0MTk1NTQzMmJiMzNkNzIxNGU4Njk0NGFiIiwidXNlcl9pZCI6IjgifQ.DfYu5sOzuhAnEk0DbEZC_KI5ZLCbrRzuFC2-rocQVNA
