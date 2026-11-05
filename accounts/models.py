@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.core.mail import send_mail
 
 # Create your models here.
 
@@ -36,7 +37,18 @@ def create_student_profile(sender,instance,created,*args,**kwargs):
 
             StudentProfile.objects.create(student=instance)
 
-post_save.connect(create_student_profile,sender=User)    
+post_save.connect(create_student_profile,sender=User) 
 
+def send_invitation_mail(sender,instance,created,*args,**kwargs):
+
+      if created and instance.role == "student":
+
+            send_mail(
+                  "Account Creation Confirmation",
+                  "You Have Successfully Created User in Codepilot Application",
+                  "thusharashaju21@gmail.com",
+                  ["soorajdas818@gmail.com"],
+            )
+post_save.connect(send_invitation_mail,sender=User)
 
       

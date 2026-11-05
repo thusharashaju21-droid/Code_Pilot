@@ -82,16 +82,15 @@ class ProfileUpdateView(APIView):
             return Response(data=serializer_instance.errors)
 
 
-class StudentProfileMeView(APIView):
+class StudentProfileGetView(APIView):
 
     authentication_classes = [JWTAuthentication]
+    permission_classes = [permissions.IsAuthenticated,IsStudent]
 
-    permission_classes = [permissions.IsAuthenticated, IsStudent]
+    def get(self,request):
 
-    def get(self, request):
+        instance = request.user.student
 
-        student_profile_object = StudentProfile.objects.get(student=request.user)
-
-        serializer_instance = StudentProfileSerializer(student_profile_object)
+        serializer_instance = StudentProfileSerializer(instance)
 
         return Response(data=serializer_instance.data)
