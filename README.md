@@ -1,102 +1,69 @@
-# CodePilot – Student Management & Evaluation System
+<p align="center">
+  <img src="codepilot-banner.png" width="100%">
+</p>
+<div align="center">
 
-## About the Project
+# 🎓 CodePilot
 
-CodePilot is a Student Management and Evaluation System developed using Python, Django REST Framework, and MySQL.
+### Student Management & Evaluation System
 
-The application helps manage student information, conduct assessments, and evaluate student performance through REST APIs.
+A Django REST Framework API for managing students, assessments and evaluations.
 
-## Technologies Used
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
+![DRF](https://img.shields.io/badge/DRF-red?style=for-the-badge&logo=django&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
 
-- Python
-- Django
-- Django REST Framework
-- MySQL
-- JWT Authentication
-- HTML
-- CSS
-- JavaScript
+</div>
 
-## Features
+---
 
-- Custom User Model
-- Admin and Student Role Management
-- JWT Authentication
-- Student Registration and Login
-- Student Profile Management
-- Role-Based Permissions
-- Student Assessment
-- Answer Submission
-- Evaluation Management
-- RESTful API Development
+## 📌 About The Project
 
-## User Roles
+CodePilot is a Student Management and Evaluation System developed using Python, Django REST Framework and MySQL.
 
-### Admin
+It provides APIs for managing student information, conducting assessments, submitting answers and evaluating student performance.
+
+## ✨ Key Features
+
+- 👤 Custom User Model
+- 🔐 JWT Authentication
+- 🎭 Admin and Student Roles
+- 📝 Student Registration and Login
+- 📚 Student Profile Management
+- 🛡️ Role-Based Permissions
+- 📋 Assessment Management
+- ✍️ Answer Submission
+- 📊 Student Evaluation
+- 🔗 RESTful API Development
+
+## 👥 User Roles
+
+### 👨‍💼 Admin
 - Manage students.
 - Create and manage questions.
 - Manage assessments.
 - Evaluate student submissions.
 
-### Student
-- Register and log in.
+### 🎓 Student
+- Register and login.
 - Manage profile information.
 - Participate in assessments.
 - Submit answers.
 - View evaluation details.
 
-## Installation
+## 🛠️ Technologies Used
 
-1. Clone the repository:
+| Technology | Purpose |
+|---|---|
+| 🐍 Python | Backend Programming |
+| 🌐 Django | Web Framework |
+| 🔗 Django REST Framework | API Development |
+| 🗄️ MySQL | Database |
+| 🔐 JWT | Authentication |
+| 🧰 Git & GitHub | Version Control |
 
-```bash
-git clone YOUR_CODEPILOT_GITHUB_URL
-```
+## ⚙️ Installation
 
-2. Navigate to the project folder:
-
-```bash
-cd codepilot
-```
-
-3. Create a virtual environment:
-
-```bash
-python -m venv code_pilot_env
-```
-
-4. Activate the environment:
-
-```bash
-code_pilot_env\Scripts\activate
-```
-
-5. Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-6. Run migrations:
-
-```bash
-python manage.py makemigrations
-python manage.py migrate
-```
-
-7. Start the development server:
-
-```bash
-python manage.py runserver
-```
-
-## Project Purpose
-
-This project was developed to gain practical experience in Django REST Framework, custom user models, JWT authentication, role-based permissions, and backend API development.
-
-## Developer
-
-**Thushara VS**
-
-- GitHub: https://github.com/thusharashaju21-droid
-- LinkedIn: https://www.linkedin.com/in/thushara-vs-/
+### 1. Clone
